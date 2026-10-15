@@ -93,8 +93,7 @@ const Navbar = () => {
 
           {/* Logo */}
           <Link to="/" className="navbar__logo">
-            <span className="navbar__logo-mark">M</span>
-            <span className="navbar__logo-text">MOBIX</span>
+            <img src="/logo.png" alt="Web Mobile Store" className="navbar__logo-img" />
           </Link>
 
           {/* Desktop nav links */}

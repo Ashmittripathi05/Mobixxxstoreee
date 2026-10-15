@@ -27,10 +27,19 @@
 .navbar__logo {
   display: flex;
   align-items: center;
-  gap: 7px;
   flex-shrink: 0;
   text-decoration: none;
 }
+
+.navbar__logo-img {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  /* invert to white on dark navbar */
+  filter: brightness(0) invert(1);
+}
+
 
 .navbar__logo-mark {
   width: 30px;
