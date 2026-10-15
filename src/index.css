@@ -1,0 +1,356 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ─── Design Tokens ───────────────────────────────── */
+:root {
+  --primary:       #5B8DEF;
+  --primary-light: #7AA5F5;
+  --accent:        #3B82F6;
+  --accent-hover:  #2563EB;
+  --offer:         #F87171;
+  --offer-bg:      rgba(248,113,113,0.12);
+  --success:       #34D399;
+  --warning:       #FBBF24;
+
+  --bg:            #111318;
+  --bg-2:          #1A1D24;
+  --bg-3:          #22262F;
+  --bg-4:          #2C313D;
+
+  --text:          #E8EAF0;
+  --text-2:        #A9B1C2;
+  --text-3:        #6B7585;
+  --text-4:        #464F60;
+
+  --border:        #252930;
+  --border-dark:   #30363F;
+
+  --shadow-xs: 0 1px 2px rgba(0,0,0,0.3);
+  --shadow-sm: 0 1px 4px rgba(0,0,0,0.35);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.4);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.5);
+
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --navbar-h: 62px;
+}
+
+/* ─── Reset ───────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+}
+
+a  { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+img { max-width: 100%; display: block; }
+button { cursor: pointer; font-family: var(--font); }
+input, select, textarea { font-family: var(--font); }
+
+/* ─── Layout ──────────────────────────────────────── */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.page-wrapper {
+  min-height: calc(100vh - var(--navbar-h));
+  padding-top: var(--navbar-h);
+}
+
+/* ─── Buttons ─────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 9px 18px;
+  border-radius: var(--radius-sm);
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1;
+  border: none;
+  transition: background 0.18s, border-color 0.18s, color 0.18s, box-shadow 0.18s, transform 0.12s;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn:active { transform: scale(0.98); }
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+}
+.btn-primary:hover { background: var(--accent-hover); box-shadow: 0 2px 8px rgba(37,99,235,0.3); }
+
+.btn-navy {
+  background: var(--primary);
+  color: #fff;
+}
+.btn-navy:hover { background: var(--primary-light); }
+
+.btn-outline {
+  background: transparent;
+  border: 1.5px solid var(--border-dark);
+  color: var(--text);
+}
+.btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-2);
+  border: none;
+}
+.btn-ghost:hover { background: var(--bg-3); color: var(--text); }
+
+.btn-sm { padding: 7px 14px; font-size: 13px; }
+.btn-lg { padding: 12px 24px; font-size: 15px; }
+.btn-full { width: 100%; }
+
+/* ─── Form elements ───────────────────────────────── */
+.form-group { display: flex; flex-direction: column; gap: 5px; }
+
+.form-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-2);
+}
+
+.form-input,
+.form-select {
+  padding: 10px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  color: var(--text);
+  background: var(--bg);
+  transition: border-color 0.18s, box-shadow 0.18s;
+  width: 100%;
+}
+
+.form-input:focus,
+.form-select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.12);
+}
+
+/* ─── Section headings ────────────────────────────── */
+.section-heading {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: -0.3px;
+}
+
+.section-sub {
+  font-size: 14px;
+  color: var(--text-3);
+  margin-top: 3px;
+}
+
+/* ─── Badge ───────────────────────────────────────── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 100px;
+  font-size: 11.5px;
+  font-weight: 600;
+}
+
+.badge-new     { background: #EFF6FF; color: var(--accent); }
+.badge-offer   { background: var(--offer-bg); color: var(--offer); }
+.badge-success { background: #F0FDF4; color: var(--success); }
+
+/* ─── Stars ───────────────────────────────────────── */
+.stars { display: inline-flex; gap: 1px; }
+.star { color: #F59E0B; font-size: 13px; }
+.star-empty { color: #D1D5DB; }
+
+/* ─── Price ───────────────────────────────────────── */
+.price-current {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.price-original {
+  font-size: 13px;
+  color: var(--text-3);
+  text-decoration: line-through;
+}
+
+.price-discount {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--offer);
+}
+
+/* ─── Divider ─────────────────────────────────────── */
+.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 16px 0;
+}
+
+/* ─── Scrollbar ───────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-2); }
+::-webkit-scrollbar-thumb { background: var(--border-dark); border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-3); }
+
+/* ─── Responsive ──────────────────────────────────── */
+@media (max-width: 768px) {
+  .container { padding: 0 14px; }
+  .section-heading { font-size: 17px; }
+}
+
+/* ════════════════════════════════════════════════════
+   ANIMATION SYSTEM
+   ════════════════════════════════════════════════════ */
+
+/* ─── Keyframes ───────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeLeft {
+  from { opacity: 0; transform: translateX(-28px); }
+  to   { opacity: 1; transform: translateX(0);     }
+}
+
+@keyframes fadeRight {
+  from { opacity: 0; transform: translateX(28px); }
+  to   { opacity: 1; transform: translateX(0);    }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1);    }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px);  }
+  50%       { transform: translateY(-7px); }
+}
+
+@keyframes subtlePulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(59,130,246,0); }
+  50%       { box-shadow: 0 0 0 6px rgba(59,130,246,0.12); }
+}
+
+@keyframes shimmerSlide {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center;  }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0);     }
+}
+
+/* ─── Base scroll-animation state ─────────────────── */
+.anim {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.anim.anim--left   { transform: translateX(-24px); }
+.anim.anim--right  { transform: translateX(24px);  }
+.anim.anim--scale  { transform: scale(0.94);        }
+.anim.anim--fade   { transform: none;               }
+
+/* Triggered state */
+.anim.in-view {
+  opacity: 1;
+  transform: translateY(0) translateX(0) scale(1);
+}
+
+/* ─── Stagger delays (applied to grid children) ───── */
+.stagger-grid > *:nth-child(1)  { transition-delay: 0.00s; }
+.stagger-grid > *:nth-child(2)  { transition-delay: 0.06s; }
+.stagger-grid > *:nth-child(3)  { transition-delay: 0.12s; }
+.stagger-grid > *:nth-child(4)  { transition-delay: 0.18s; }
+.stagger-grid > *:nth-child(5)  { transition-delay: 0.24s; }
+.stagger-grid > *:nth-child(6)  { transition-delay: 0.30s; }
+.stagger-grid > *:nth-child(7)  { transition-delay: 0.36s; }
+.stagger-grid > *:nth-child(8)  { transition-delay: 0.42s; }
+.stagger-grid > *:nth-child(n+9){ transition-delay: 0.48s; }
+
+/* ─── Floating card animation ─────────────────────── */
+.anim-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.anim-float--delayed {
+  animation: float 4s ease-in-out 1.5s infinite;
+}
+
+/* ─── Page fade-in ────────────────────────────────── */
+.page-wrapper {
+  animation: fadeIn 0.35s ease both;
+}
+
+/* ─── Navbar slide-down on load ───────────────────── */
+.navbar {
+  animation: slideDown 0.4s ease both;
+}
+
+/* ─── Button press + glow ─────────────────────────── */
+.btn-primary:focus-visible,
+.btn-navy:focus-visible {
+  outline: none;
+  animation: subtlePulse 1.8s ease infinite;
+}
+
+/* ─── Product card shimmer on hover ──────────────────
+   A very subtle sheen over the image wrapper           */
+.product-card__img-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255,255,255,0.06) 50%,
+    transparent 60%
+  );
+  background-size: 200% 100%;
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+
+.product-card:hover .product-card__img-wrap::after {
+  opacity: 1;
+  animation: shimmerSlide 0.9s ease forwards;
+}
+
+/* ─── Reduce motion ───────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .anim, .anim-float, .anim-float--delayed,
+  .page-wrapper, .navbar { animation: none; transition: none; }
+  .anim { opacity: 1; transform: none; }
+}
+

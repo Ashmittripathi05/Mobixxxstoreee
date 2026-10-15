@@ -1,0 +1,142 @@
+.hero {
+  background: var(--bg-2);
+  border-bottom: 1px solid var(--border);
+  padding: 40px 0 0;
+}
+
+.hero__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 48px;
+  min-height: 480px;
+}
+
+/* Content */
+.hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  background: rgba(59,130,246,0.15);
+  padding: 4px 12px;
+  border-radius: 100px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 14px;
+}
+
+.hero__heading {
+  font-size: 34px;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1.2;
+  letter-spacing: -0.8px;
+  margin-bottom: 14px;
+}
+
+.hero__sub {
+  font-size: 15px;
+  color: var(--text-2);
+  line-height: 1.65;
+  max-width: 440px;
+  margin-bottom: 20px;
+}
+
+.hero__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+
+.hero__badge {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--text-2);
+  background: var(--bg-3);
+  border: 1px solid var(--border-dark);
+  padding: 5px 12px;
+  border-radius: 100px;
+}
+
+.hero__ctas {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Image area */
+.hero__img-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.hero__img {
+  width: 100%;
+  max-width: 520px;
+  height: 400px;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+}
+
+/* Floating info cards */
+.hero__img-card {
+  position: absolute;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 10px 16px;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.hero__img-card--top {
+  top: 20px;
+  left: -10px;
+}
+
+.hero__img-card--bottom {
+  bottom: 30px;
+  right: -10px;
+}
+
+.hero__img-card-label {
+  font-size: 11px;
+  color: var(--text-3);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.hero__img-card-value {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+@media (max-width: 900px) {
+  .hero__inner {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding-bottom: 32px;
+  }
+
+  .hero__img-wrap { display: none; }
+
+  .hero__heading { font-size: 26px; }
+  .hero__sub { max-width: 100%; }
+}
+
+@media (max-width: 600px) {
+  .hero { padding: 28px 0 0; }
+  .hero__heading { font-size: 22px; }
+  .hero__ctas .btn { flex: 1; }
+}
