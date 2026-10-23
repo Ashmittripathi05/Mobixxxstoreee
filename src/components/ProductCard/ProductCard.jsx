@@ -114,7 +114,7 @@ const ProductCard = ({ product, className = '' }) => {
         </div>
 
         <button
-          className={`btn btn-primary btn-sm product-card__cart-btn${adding ? ' adding' : ''}`}
+          className={`product-card__cart-btn${adding ? ' adding' : ''}`}
           onClick={handleAddToCart}
         >
           <CartIcon />

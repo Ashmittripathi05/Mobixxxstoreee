@@ -3,11 +3,35 @@ import { getAdminStats, monthlyRevenue, orders } from '../../data/adminData';
 import './AdminDashboard.css';
 import './AdminLayout.css';
 
-const StatCard = ({ label, value, sub, color = 'blue' }) => (
+const TrendUpIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/>
+  </svg>
+);
+const TruckIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+  </svg>
+);
+const AlertIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+  </svg>
+);
+
+const StatCard = ({ label, value, sub, color = 'blue', icon, trend }) => (
   <div className={`stat-card stat-card--${color}`}>
-    <p className="stat-card__label">{label}</p>
+    <div className="stat-card__header">
+      <p className="stat-card__label">{label}</p>
+      {icon && <span className="stat-card__icon">{icon}</span>}
+    </div>
     <p className="stat-card__value">{value}</p>
     {sub && <p className="stat-card__sub">{sub}</p>}
+    {trend && (
+      <div className={`stat-card__trend stat-card__trend--${trend.dir}`}>
+        {trend.dir === 'up' ? '↑' : '↓'} {trend.text}
+      </div>
+    )}
   </div>
 );
 
@@ -33,15 +57,11 @@ const RevenueChart = () => {
           const y = H - barH;
           return (
             <g key={m.label}>
-              {/* Background track */}
-              <rect x={x} y={0} width={BAR_W} height={H} rx="6" fill="rgba(255,255,255,0.04)" />
-              {/* Bar */}
+              <rect x={x} y={0} width={BAR_W} height={H} rx="6" fill="rgba(255,255,255,0.03)" />
               <rect x={x} y={y} width={BAR_W} height={barH} rx="6" fill="url(#barGrad)" />
-              {/* Value label */}
               <text x={x + BAR_W / 2} y={y - 6} textAnchor="middle" fontSize="9" fill="#A9B1C2">
                 {m.revenue > 0 ? `₹${(m.revenue / 1000).toFixed(0)}K` : '—'}
               </text>
-              {/* Month label */}
               <text x={x + BAR_W / 2} y={H + 20} textAnchor="middle" fontSize="10" fill="#6B7585">
                 {m.label}
               </text>
@@ -63,10 +83,45 @@ const AdminDashboard = () => {
   const stats = getAdminStats();
   const recentOrders = orders.slice(0, 8);
 
+  // Simulate a live GMV number
+  const liveGMV = (stats.thisMonthRevenue + 1842500).toLocaleString('en-IN');
+
   return (
     <AdminLayout>
-      <p className="admin-page-title">Dashboard</p>
-      <p className="admin-page-sub">Welcome back, Owner. Here's your store overview.</p>
+      {/* Page header */}
+      <div className="admin-page-header">
+        <div>
+          <p className="admin-page-title">Dashboard</p>
+          <p className="admin-page-sub">Welcome back, Owner. Here&apos;s your store overview.</p>
+        </div>
+        <div className="admin-live-indicator">
+          <span className="admin-live-dot" />
+          Live Data
+        </div>
+      </div>
+
+      {/* Top telemetry bar */}
+      <div className="admin-telemetry-bar">
+        <div className="admin-telem-item">
+          <div className="admin-telem-label"><TrendUpIcon /> Today&apos;s Live GMV</div>
+          <div className="admin-telem-value admin-telem-value--green">₹{liveGMV}</div>
+          <div className="admin-telem-sub">+14.2% vs yesterday pace</div>
+        </div>
+        <div className="admin-telem-divider" />
+        <div className="admin-telem-item">
+          <div className="admin-telem-label"><TruckIcon /> Active Dispatches</div>
+          <div className="admin-telem-value">142</div>
+          <div className="admin-telem-sub">Across 8 Regional Hubs</div>
+        </div>
+        <div className="admin-telem-divider" />
+        <div className="admin-telem-item">
+          <div className="admin-telem-label"><AlertIcon /> Inventory Watch</div>
+          <div className="admin-telem-value admin-telem-value--red">
+            {String(stats.outOfStockCount + stats.lowStockCount).padStart(2, '0')} SKUs
+          </div>
+          <div className="admin-telem-sub admin-telem-sub--red">Low Stock Warning</div>
+        </div>
+      </div>
 
       {/* Stat cards */}
       <div className="stat-cards-grid">
@@ -75,12 +130,14 @@ const AdminDashboard = () => {
           value={`₹${(stats.totalRevenue / 100000).toFixed(2)}L`}
           sub={`₹${stats.thisMonthRevenue.toLocaleString('en-IN')} this month`}
           color="blue"
+          trend={{ dir: 'up', text: '18% vs last month' }}
         />
         <StatCard
           label="Total Orders"
           value={stats.totalOrders}
           sub={`${stats.thisMonthOrders} orders this month`}
           color="green"
+          trend={{ dir: 'up', text: '12% this period' }}
         />
         <StatCard
           label="Avg. Order Value"
@@ -93,6 +150,7 @@ const AdminDashboard = () => {
           value={stats.lowStockCount + stats.outOfStockCount}
           sub={`${stats.outOfStockCount} out of stock · ${stats.lowStockCount} low`}
           color="red"
+          trend={{ dir: 'down', text: 'Needs restocking' }}
         />
         <StatCard
           label="Delivered"

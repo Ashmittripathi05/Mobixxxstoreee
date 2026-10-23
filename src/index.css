@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap');
 
 /* ─── Design Tokens ───────────────────────────────── */
 :root {
-  --primary:       #5B8DEF;
-  --primary-light: #7AA5F5;
+  --primary:       #60A5FA;
+  --primary-light: #93C5FD;
   --accent:        #3B82F6;
   --accent-hover:  #2563EB;
   --offer:         #F87171;
