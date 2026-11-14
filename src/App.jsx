@@ -3,6 +3,7 @@ import { CartProvider } from './context/CartContext';
 import { WishlistProvider } from './context/WishlistContext';
 import { ToastProvider } from './context/ToastContext';
 import { AdminProvider, useAdmin } from './context/AdminContext';
+import { InventoryProvider } from './context/InventoryContext';
 import useScrollAnimation from './hooks/useScrollAnimation';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
@@ -16,6 +17,7 @@ import Offers from './pages/Offers/Offers';
 import Accessories from './pages/Accessories/Accessories';
 import AdminLogin from './pages/Admin/AdminLogin';
 import AdminDashboard from './pages/Admin/AdminDashboard';
+import InventoryPage from './pages/Admin/Inventory';
 import './index.css';
 
 // Protected route: redirect to login if not authenticated as admin
@@ -36,6 +38,14 @@ function AnimatedApp() {
           element={
             <ProtectedAdminRoute>
               <AdminDashboard />
+            </ProtectedAdminRoute>
+          }
+        />
+        <Route
+          path="/admin/inventory"
+          element={
+            <ProtectedAdminRoute>
+              <InventoryPage />
             </ProtectedAdminRoute>
           }
         />
@@ -78,13 +88,15 @@ function App() {
   return (
     <BrowserRouter>
       <AdminProvider>
-        <CartProvider>
-          <WishlistProvider>
-            <ToastProvider>
-              <AnimatedApp />
-            </ToastProvider>
-          </WishlistProvider>
-        </CartProvider>
+        <InventoryProvider>
+          <CartProvider>
+            <WishlistProvider>
+              <ToastProvider>
+                <AnimatedApp />
+              </ToastProvider>
+            </WishlistProvider>
+          </CartProvider>
+        </InventoryProvider>
       </AdminProvider>
     </BrowserRouter>
   );
