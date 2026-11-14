@@ -95,13 +95,13 @@
 }
 
 .admin-nav-link--active {
-  background: rgba(59,130,246,0.15);
+  background: var(--accent-light);
   color: var(--accent);
   font-weight: 600;
 }
 
 .admin-nav-link--logout { color: var(--offer); }
-.admin-nav-link--logout:hover { background: rgba(248,113,113,0.1); color: var(--offer); }
+.admin-nav-link--logout:hover { background: var(--offer-bg); color: var(--offer); }
 
 .admin-nav-link--store { color: var(--text-3); }
 
@@ -137,10 +137,11 @@
 }
 
 .admin-card {
-  background: var(--bg-2);
+  background: #ffffff;
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   padding: 20px 24px;
+  box-shadow: var(--shadow-xs);
 }
 
 .admin-section-title {
@@ -171,13 +172,13 @@
   background: currentColor;
 }
 
-.status-badge--delivered  { background: rgba(52,211,153,0.15); color: var(--success); }
-.status-badge--processing { background: rgba(251,191,36,0.15);  color: #FBBF24; }
-.status-badge--shipped    { background: rgba(59,130,246,0.15);  color: var(--accent); }
-.status-badge--cancelled  { background: rgba(248,113,113,0.15); color: var(--offer); }
-.status-badge--in-stock   { background: rgba(52,211,153,0.15); color: var(--success); }
-.status-badge--low-stock  { background: rgba(251,191,36,0.15);  color: #FBBF24; }
-.status-badge--out-of-stock { background: rgba(248,113,113,0.15); color: var(--offer); }
+.status-badge--delivered  { background: var(--success-bg); color: var(--success); border: 1px solid var(--success-border); }
+.status-badge--processing { background: var(--warning-bg);  color: var(--warning); border: 1px solid #FDE68A; }
+.status-badge--shipped    { background: var(--accent-light);  color: var(--accent); border: 1px solid var(--accent-border); }
+.status-badge--cancelled  { background: var(--offer-bg); color: var(--offer); border: 1px solid var(--offer-border); }
+.status-badge--in-stock   { background: var(--success-bg); color: var(--success); border: 1px solid var(--success-border); }
+.status-badge--low-stock  { background: var(--warning-bg);  color: var(--warning); border: 1px solid #FDE68A; }
+.status-badge--out-of-stock { background: var(--offer-bg); color: var(--offer); border: 1px solid var(--offer-border); }
 
 /* Admin table */
 .admin-table-wrap {

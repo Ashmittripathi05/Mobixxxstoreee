@@ -88,14 +88,14 @@
 .active-filter-chip {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  background: rgba(59,130,246,0.15);
+  gap: 6px;
+  background: var(--accent-light);
   color: var(--accent);
-  border: 1px solid rgba(59,130,246,0.3);
+  border: 1px solid var(--accent-border);
   border-radius: 100px;
-  padding: 3px 10px 3px 12px;
+  padding: 4px 12px;
   font-size: 12.5px;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .active-filter-chip button {

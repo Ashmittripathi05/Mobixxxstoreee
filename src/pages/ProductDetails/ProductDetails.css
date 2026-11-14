@@ -198,7 +198,7 @@
 }
 
 .pd-option-chip:hover { border-color: var(--accent); color: var(--accent); }
-.pd-option-chip--active { border-color: var(--accent); background: rgba(59,130,246,0.15); color: var(--accent); font-weight: 600; }
+.pd-option-chip--active { border-color: var(--accent); background: var(--accent-light); color: var(--accent); font-weight: 600; }
 
 /* Colors */
 .pd-colors {
@@ -246,7 +246,7 @@
 .pd-trust-icon {
   width: 20px;
   height: 20px;
-  background: rgba(52,211,153,0.15);
+  background: var(--success-bg);
   color: var(--success);
   border-radius: 50%;
   display: flex;
