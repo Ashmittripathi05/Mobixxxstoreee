@@ -1,0 +1,39 @@
+/* Orders page — reuses inv-table styles, adds specific overrides */
+
+.ord-header-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+.ord-header-label {
+  font-size: 11px;
+  color: #64748B;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .4px;
+}
+.ord-header-val {
+  font-size: 22px;
+  font-weight: 800;
+  color: #0F172A;
+  letter-spacing: -.5px;
+}
+
+.ord-sort-select {
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 13px;
+  color: #374151;
+  background: #fff;
+  outline: none;
+  cursor: pointer;
+}
+.ord-sort-select:focus { border-color: #3B82F6; }
+
+.ord-id     { font-weight: 700; color: #1D4ED8; font-size: 12.5px; }
+.ord-customer { font-weight: 600; color: #0F172A; }
+.ord-city   { font-size: 12px; color: #64748B; }
+.ord-product { font-size: 12.5px; color: #374151; }
+.ord-amount { font-weight: 700; color: #0F172A; }

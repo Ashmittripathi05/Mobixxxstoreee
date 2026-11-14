@@ -12,9 +12,8 @@ const StoreIcon = () => <svg width="15" height="15" viewBox="0 0 24 24" fill="no
 
 const navLinks = [
   { to: '/admin',           label: 'Dashboard',  Icon: DashIcon,  end: true },
-  { to: '/admin/inventory', label: 'Inventory',  Icon: InvIcon },
   { to: '/admin/products',  label: 'Products',   Icon: ProdIcon  },
-  { to: '/admin/stock',     label: 'Stock',      Icon: StockIcon },
+  { to: '/admin/inventory', label: 'Inventory & Stock', Icon: InvIcon },
   { to: '/admin/orders',    label: 'Orders',     Icon: OrderIcon },
 ];
 

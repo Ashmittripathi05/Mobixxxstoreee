@@ -18,6 +18,8 @@ import Accessories from './pages/Accessories/Accessories';
 import AdminLogin from './pages/Admin/AdminLogin';
 import AdminDashboard from './pages/Admin/AdminDashboard';
 import InventoryPage from './pages/Admin/Inventory';
+import ProductsPage from './pages/Admin/Products';
+import OrdersPage from './pages/Admin/Orders';
 import './index.css';
 
 // Protected route: redirect to login if not authenticated as admin
@@ -33,30 +35,12 @@ function AnimatedApp() {
       <Routes>
         {/* Admin routes — no Navbar/Footer */}
         <Route path="/admin/login" element={<AdminLogin />} />
-        <Route
-          path="/admin"
-          element={
-            <ProtectedAdminRoute>
-              <AdminDashboard />
-            </ProtectedAdminRoute>
-          }
-        />
-        <Route
-          path="/admin/inventory"
-          element={
-            <ProtectedAdminRoute>
-              <InventoryPage />
-            </ProtectedAdminRoute>
-          }
-        />
-        <Route
-          path="/admin/*"
-          element={
-            <ProtectedAdminRoute>
-              <AdminDashboard />
-            </ProtectedAdminRoute>
-          }
-        />
+        <Route path="/admin" element={<ProtectedAdminRoute><AdminDashboard /></ProtectedAdminRoute>} />
+        <Route path="/admin/inventory" element={<ProtectedAdminRoute><InventoryPage /></ProtectedAdminRoute>} />
+        <Route path="/admin/stock"     element={<ProtectedAdminRoute><InventoryPage /></ProtectedAdminRoute>} />
+        <Route path="/admin/products"  element={<ProtectedAdminRoute><ProductsPage /></ProtectedAdminRoute>} />
+        <Route path="/admin/orders"    element={<ProtectedAdminRoute><OrdersPage /></ProtectedAdminRoute>} />
+        <Route path="/admin/*"         element={<ProtectedAdminRoute><AdminDashboard /></ProtectedAdminRoute>} />
 
         {/* Customer storefront */}
         <Route
